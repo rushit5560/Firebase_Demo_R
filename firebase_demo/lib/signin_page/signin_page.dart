@@ -15,9 +15,9 @@ class SignInPage extends StatelessWidget {
       ),
       body: Center(
         child: Obx(
-          () => signInController.googleAccount.value == null
-              ? loginButton()
-              : profileScreen(),
+          () => signInController.isLoggedIn.value/* != null*/
+              ? profileScreen()
+              : loginButton(),
         ),
       ),
     );
@@ -43,7 +43,7 @@ class SignInPage extends StatelessWidget {
       children: [
         // SizedBox(height: 10),
         CircleAvatar(
-          backgroundImage: NetworkImage(signInController.googleAccount.value!.photoUrl!),
+          backgroundImage: NetworkImage(signInController.googleAccount.value!.photoUrl ?? ""),
           radius: 100,
         ),
         SizedBox(height: 10),
